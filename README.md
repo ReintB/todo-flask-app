@@ -13,19 +13,17 @@ py app.py
 
 Buka `http://127.0.0.1:5000`.
 
-## Deploy ke Render
+## Upload ke GitHub
 
-Proyek ini sudah menyediakan `render.yaml`. Setelah repository di-upload ke GitHub:
+GitHub digunakan sebagai tempat menyimpan source code. GitHub Pages tidak dapat menjalankan Flask karena hanya mendukung website statis.
 
-1. Masuk ke [Render](https://render.com) dan login dengan GitHub.
-2. Pilih **New > Blueprint**.
-3. Pilih repository ini.
-4. Konfirmasi konfigurasi dari `render.yaml` dan deploy.
-5. Render akan memberikan URL publik.
+```powershell
+git add .
+git commit -m "Update deployment guide"
+git push origin main
+```
 
-Database SQLite berada di `instance/todo.db`. Pada paket Render gratis, filesystem bersifat sementara sehingga data dapat hilang ketika service di-redeploy atau restart. Untuk data yang persisten, gunakan PythonAnywhere atau pindahkan database ke PostgreSQL.
-
-## Deploy ke PythonAnywhere
+## Publish dengan PythonAnywhere
 
 Pada Bash Console PythonAnywhere:
 
@@ -44,3 +42,5 @@ from app import app as application
 ```
 
 Simpan, lalu klik **Reload**.
+
+PythonAnywhere menyediakan filesystem persisten untuk aplikasi kecil seperti ini, sehingga database SQLite tetap tersimpan. URL publik akan berbentuk `https://USERNAME.pythonanywhere.com`.
